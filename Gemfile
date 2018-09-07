@@ -22,7 +22,7 @@ gem 'will_paginate'
 gem 'jquery-rails'
 gem "font-awesome-rails"
 gem 'bootstrap-datepicker-rails'
-
+#gem 'rubyzip', '>=1.2.2'
 #gem 'rails-i18n'
 
 # pur les filtres
