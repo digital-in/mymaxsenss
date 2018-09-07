@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :praticiens do
     collection { post :import }
   end
-  root to: "praticiens#index"
+  root to: "welcome#index"
   
   resources :sessions
   get 'signup', to: 'users#new', as: 'signup'
