@@ -1,0 +1,43 @@
+<h1>Editing Cabinet</h1>
+
+<%= form_with(model: @cabinet, local: true) do |form| %>
+<% if @cabinet.errors.any? %>
+	<div id="error_explanation">
+	<h2>
+	<%= pluralize(@cabinet.errors.count, "erreur") %> dans ce formulaire:
+	</h2>
+	<ul>
+		<% @cabinet.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+	</div>
+<% end %>
+
+<table>														       
+<tr>
+	<td><strong>Nom du cabinet :</strong></td>
+	<td><%= form.text_field :nom %></td>
+</tr>
+<tr>
+	<td><strong>Lieu :</strong></td>
+	<td><%= form.select :lieu_id, options_for_select(@lieux, @cabinet.lieu_id) %></td>
+</tr>
+<tr>
+	<td><strong>Description :</strong></td>
+	<td><%= form.text_area :description %></td>
+</tr>
+<tr>
+	<td><strong>Archive :</strong></td>
+	<td><%= form.check_box :archive %></td>
+</tr>
+											       
+<tr>
+	<td><%= form.submit 'Enregistrer', :class => 'btn btn-primary'%></td>
+</tr>
+</table>
+																			       
+<% end %>
+
+<%= link_to 'Show', @cabinet %> |
+<%= link_to 'Back', cabinets_path %>

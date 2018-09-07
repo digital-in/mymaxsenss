@@ -1,0 +1,32 @@
+<h2>Détails du lieu</h2>
+<p id="notice"><%= notice %></p>
+
+<table class="table table-dark">
+<tr>
+  <td><strong>Nom :</strong></td>
+  <td><%= @lieu.nom %></td>
+</tr>
+
+<tr>
+  <td><strong>Adresse :</strong></td>
+  <td><%= @lieu.adresse %></td>
+</tr>
+
+<tr>
+  <td><strong>Codepostal:</strong></td>
+  <td><%= @lieu.codepostal %></td>
+</tr>
+
+<tr>
+  <td><strong>Ville:</strong></td>
+  <td><%= @lieu.ville %></td>
+</tr>
+
+<tr>
+  <td><strong>Archive:</strong></td>
+  <td><%= human_boolean(@lieu.archive) %></td>
+</tr>
+</table>
+
+<%= link_to 'Modifier le lieu', edit_lieu_path(@lieu) %> |
+<%= link_to 'Retour à la liste', lieus_path %>

@@ -1,0 +1,47 @@
+<h1>Nouvelle Affectation</h1>
+
+<%= form_with(model: @affectation, local: true) do |form| %>
+<% if @affectation.errors.any? %>
+	<div id="error_explanation">
+	<h2>
+	<%= pluralize(@affectation.errors.count, "erreur") %> dans ce formulaire:
+	</h2>
+	<ul>
+		<% @affectation.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+	</div>
+<% end %>
+
+<table class="table table-dark">												       
+<tr>
+	<td><strong>Cabinet</strong></td>
+	<td><%= form.select :cabinet_id, options_for_select(@Cabinets, params[:cabinet_id]) %></td>
+</tr>
+<tr>
+	<td><strong>Créneau</strong></td>
+	<td><%= form.select :creneau_id, options_for_select(@Creneaux, params[:creneau_id]) %></td>
+</tr>
+<tr>
+	<td><strong>Praticien</strong></td>
+	<td><%= form.select :praticien_id, options_for_select(@Praticiens) %></td>
+</tr>
+<tr>
+	<td><strong>Date de début</strong></td>
+	<%= datepicker_input form, :datedebut, Date.today.strftime("%d/%m/%Y") %>
+</tr>
+<tr>
+	<td><strong>Date de fin</strong></td>
+	<%= datepicker_input form, :datefin, Date.today.years_ago(-3).days_ago(1).strftime("%d/%m/%Y") %>
+</tr>
+
+											       
+<tr>
+	<td><%= form.submit 'Enregistrer cette affectation', :class => 'btn btn-primary'%></td>
+</tr>
+</table>
+																			       
+<% end %>
+
+<%= link_to 'Back', affectations_path %>

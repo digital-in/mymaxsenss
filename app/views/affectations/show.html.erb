@@ -1,0 +1,32 @@
+<h2>Détails de l'affectation</h2>
+
+<p id="notice"><%= notice %></p>
+
+<table class="table table-dark">
+<tr>
+  <td><strong>Cabinet :</strong></td>
+  <td><%= @affectation.cabinet.nom %></td>
+</tr>
+<tr>
+  <td><strong>Creneau :</strong></td>
+  <td><%= @affectation.creneau.txtjour %></td>
+</tr>
+
+<tr>
+  <td><strong>Nom du Praticien :</strong></td>
+  <td><%= @affectation.praticien.prenom %> <%= @affectation.praticien.nom %>, <%= @affectation.praticien.pratique %></td>
+</tr>
+
+<tr>
+  <td><strong>Date de début :</strong></td>
+  <td><%= datefr(@affectation.datedebut) %></td>
+</tr>
+
+<tr>
+  <td><strong>Date de fin :</strong></td>
+  <td><%= datefr(@affectation.datefin) %></td>
+</tr>
+</table>
+
+<%= link_to 'Modifier', edit_affectation_path(@affectation) %> |
+<%= link_to 'Retour à la liste', affectations_path %>

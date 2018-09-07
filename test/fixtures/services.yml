@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nom: MyString
+  description: MyText
+  tarifht: 9.99
+  tva: 9.99
+  archive: false
+
+two:
+  nom: MyString
+  description: MyText
+  tarifht: 9.99
+  tva: 9.99
+  archive: false

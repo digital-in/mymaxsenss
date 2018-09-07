@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nom: MyString
+  lieu_id: 
+  description: MyText
+  archive: false
+
+two:
+  nom: MyString
+  lieu_id: 
+  description: MyText
+  archive: false

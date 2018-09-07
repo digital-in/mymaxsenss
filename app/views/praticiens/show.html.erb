@@ -1,0 +1,46 @@
+<h1>Praticien</h1>
+
+<table>
+<tr>
+  <td><strong>Nom :</strong></td>
+  <td>  <%= @praticien.nom %></td>
+</tr>
+     
+<tr>
+   <td><strong>Pr&eacute;nom :</strong></td>
+   <td>  <%= @praticien.prenom %></td>
+</tr>
+
+<tr>
+  <td><strong>Pratique :</strong></td>
+  <td>  <%= @praticien.pratique %></td>
+</tr>
+
+<tr>
+  <td><strong>Email :</strong></td>
+  <td>  <%= @praticien.email %></td>
+</tr>
+
+<tr>
+  <td><strong>Téléphone :</strong></td>
+  <td>  <%= @praticien.tel %></td>
+</tr>
+
+<tr>
+  <td><strong>Praticien MaxSenss :</strong></td>
+  <td>  <%= human_boolean(@praticien.maxsenss) %> </td>
+</tr>
+
+<tr>
+  <td><strong>Pratiques pour les kids :</strong></td>
+  <td>  <%= human_boolean(@praticien.kids) %> </td>
+</tr>
+
+<tr>
+  <td><strong>Informations :</strong></td>
+  <td>  <%= @praticien.text %></td>
+</tr>
+</table>
+
+<%= link_to 'Modifier', edit_praticien_path(@praticien) %> |
+<%= link_to 'Retour à la liste ', controller: 'praticiens' %>

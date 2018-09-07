@@ -1,0 +1,42 @@
+<%= form_with(model: creneau, local: true) do |form| %>
+  <% if creneau.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(creneau.errors.count, "error") %> prohibited this creneau from being saved:</h2>
+
+      <ul>
+      <% creneau.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :numjour %>
+    <%= form.number_field :numjour %>
+  </div>
+
+  <div class="field">
+    <%= form.label :txtjour %>
+    <%= form.text_field :txtjour %>
+  </div>
+
+  <div class="field">
+    <%= form.label :heuredebut %>
+    <%= form.number_field :heuredebut %>
+  </div>
+
+  <div class="field">
+    <%= form.label :heurefin %>
+    <%= form.number_field :heurefin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :archive %>
+    <%= form.check_box :archive %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

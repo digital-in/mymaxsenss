@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  numjour: 1
+  txtjour: MyString
+  heuredebut: 1
+  heurefin: 1
+  archive: false
+
+two:
+  numjour: 1
+  txtjour: MyString
+  heuredebut: 1
+  heurefin: 1
+  archive: false

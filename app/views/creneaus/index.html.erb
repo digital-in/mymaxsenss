@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Liste des créneaux types</h1>
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th>Numéro Jour</th>
+      <th>Nom du créneau</th>
+      <th>Heure début</th>
+      <th>Heure fin</th>
+      <th>Tarif 1</th>
+      <th>Tarif 2</th>
+      <th>Archivé</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @creneaus.each do |creneau| %>
+      <tr class="<%= is_archive_boolean(creneau.archive) %>">
+        <td><%= creneau.numjour %></td>
+        <td><%= creneau.txtjour %></td>
+        <td><%= creneau.heuredebut %></td>
+        <td><%= creneau.heurefin %></td>
+        <td><%= creneau.tarif1 %></td>
+        <td><%= creneau.tarif2 %></td>
+        <td><%= human_boolean(creneau.archive) %></td>
+        <td><%= link_to 'Voir', creneau %></td>
+        <td><%= link_to 'Modifier', edit_creneau_path(creneau) %></td>
+        <td><%= link_to 'Supprimer', creneau, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nouveau Créneau type', new_creneau_path %>

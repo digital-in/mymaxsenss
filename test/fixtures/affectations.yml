@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cabinet: one
+  creneau: one
+  praticien: one
+  datedebut: 2018-08-31 00:30:06
+  datefin: 2018-08-31 00:30:06
+
+two:
+  cabinet: two
+  creneau: two
+  praticien: two
+  datedebut: 2018-08-31 00:30:06
+  datefin: 2018-08-31 00:30:06

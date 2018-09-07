@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nom:</strong>
+  <%= @cabinet.nom %>
+</p>
+
+<p>
+  <strong>Lieu:</strong>
+  <%= @cabinet.lieu.nom %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @cabinet.description %>
+</p>
+
+<p>
+  <strong>Archive:</strong>
+  <%= human_boolean(@cabinet.archive) %>
+</p>
+
+<%= link_to 'Edit', edit_cabinet_path(@cabinet) %> |
+<%= link_to 'Back', cabinets_path %>

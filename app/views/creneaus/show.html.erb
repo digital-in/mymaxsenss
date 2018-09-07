@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Numjour:</strong>
+  <%= @creneau.numjour %>
+</p>
+
+<p>
+  <strong>Txtjour:</strong>
+  <%= @creneau.txtjour %>
+</p>
+
+<p>
+  <strong>Heuredebut:</strong>
+  <%= @creneau.heuredebut %>
+</p>
+
+<p>
+  <strong>Heurefin:</strong>
+  <%= @creneau.heurefin %>
+</p>
+
+<p>
+  <strong>Archive:</strong>
+  <%= @creneau.archive %>
+</p>
+
+<%= link_to 'Edit', edit_creneau_path(@creneau) %> |
+<%= link_to 'Back', creneaus_path %>

@@ -1,0 +1,58 @@
+<h1>Nouveau Service</h1>
+
+<%= form_with(model: @service, local: true) do |form| %>
+<% if @service.errors.any? %>
+	<div id="error_explanation">
+	<h2>
+	<%= pluralize(@service.errors.count, "erreur") %> dans ce formulaire:
+	</h2>
+	<ul>
+		<% @modifier.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+	</div>
+<% end %>
+
+<table class="table table-dark">												       
+<tr>
+	<td><strong>Nom :</strong></td>
+	<td><%= form.text_field :nom %></td>
+</tr>
+<tr>
+	<td><strong>Description :</strong></td>
+	<td><%= form.text_area :description %></td>
+</tr>
+<tr>
+	<td><strong>Tarif HT ou Tarif (si pas de TVA) :</strong></td>
+	<td><%= form.number_field :tarifht %> €</td>
+</tr>
+<tr>
+	<td><strong>TVA :</strong></td>
+	<td><%= form.number_field :tva %> %</td>
+</tr>
+<tr>
+	<td><strong>Périodicité en mois :</strong></td>
+	<td><%= form.text_field :periodicitemois %></td>
+</tr>
+<tr>
+	<td><strong>Condition 1 d'application :</strong></td>
+	<td><%= form.text_field :condition1 %></td>
+</tr>
+<tr>
+	<td><strong>Condition 2 d'application :</strong></td>
+	<td><%= form.text_field :condition2 %></td>
+</tr>
+<tr>
+	<td><strong>Archivé :</strong></td>
+	<td><%= form.check_box :archive %></td>
+</tr>
+											       
+<tr>
+	<td><%= form.submit 'Créer un service', :class => 'btn btn-primary'%></td>
+</tr>
+</table>
+																			       
+<% end %>
+
+<%= link_to 'Retour à la liste', services_path %>

@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cabinets</h1>
+<%= form_tag cabinets_path, :method => 'get', :id => "cabinets_search" do %>
+  <p>
+    Archivés ? 
+    <%  if params[:display_cabinet_archive] %>
+    <%= check_box_tag :display_cabinet_archive, "yes", true %>
+    <% else %>
+    <%= check_box_tag :display_cabinet_archive, "yes", false %>
+    <% end %>
+    <%= submit_tag "Filtrer", :name => nil %>
+  </p>
+<% end %>
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Lieu</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cabinets.each do |cabinet| %>
+      <tr class="<%= is_archive_boolean(cabinet.archive) %>">
+        <td><%= cabinet.nom %></td>
+        <td><%= cabinet.lieu.nom %></td>
+        <td><%= cabinet.description %></td>
+        <td><%= link_to 'Voir', cabinet %></td>
+        <td><%= link_to 'Modifier', edit_cabinet_path(cabinet) %></td>
+        <td><%= link_to 'Supprimer', cabinet, method: :delete, data: { confirm: 'Etes-vous sûr ?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nouveau Cabinet', new_cabinet_path %>

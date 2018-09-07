@@ -1,0 +1,118 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Affectations</h1>
+
+<%= form_tag affectations_path, :method => 'get', :id => "affectations_search" do %>
+<table><tr>
+  <td data-provide="datepicker" data-date-format="dd-mm-yyyy" data-date-autoclose="true">
+    Date de visualisation : <%= text_field :datevisu, "datevisu", :value => datefr(params[:datevisudate]) %>
+    <%= submit_tag "Actualiser", :name => nil %>
+  </td>
+</tr></table>
+<% end %>
+
+
+<br>
+<% @Cabinets.each do |cabinet| %>
+<p>
+<h3><%= cabinet.lieu.nom %> - <%= cabinet.nom %> </h3>
+<table class="tableaffectation">
+  <thead>
+    <tr>
+      <th width="10%">Jour</th>
+      <th width="30%">Matin</th>
+      <th width="30%">Après-midi</th>
+      <th width="30%">Soirée</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% (1..7).each do |i| %>
+    <tr>
+      <td rowspan="2"><%= jourtxt(i) %></td>
+      <td>
+        <% @affectations.each do |affect| %>
+          <% if affect.creneau.numjour == i and affect.creneau.heuredebut == 8 and affect.creneau.heurefin == 14 and affect.cabinet.nom == cabinet.nom %>
+            <%= affect.praticien.prenom %> <%= affect.praticien.nom %><br><%= affect.praticien.pratique %>  <br> <%= affect.praticien.tel %> <br> à partir du <%= datefr(affect.datedebut) %> - <%= link_to 'Voir', affect, {:class=>"affectation_btn"} %>|<%= link_to 'Modif', edit_affectation_path(affect), {:class=>"affectation_btn"} %>|<%= link_to 'Supp', affect, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"affectation_btn" %>|
+          <% end %>
+        <% end %>
+        <% @Creneaux.each do |creneau1| %>
+          <% if creneau1.numjour == i and  creneau1.heuredebut == 8 and creneau1.heurefin == 14 %>
+            <%= link_to 'Ajouter', new_affectation_path(:cabinet_id => cabinet.id, :creneau_id => creneau1.id), {:class=>"affectation_btn"} %>
+          <% end %>
+        <% end %>
+      </td>
+      <td>
+        <% @affectations.each do |affect| %>
+          <% if affect.creneau.numjour == i and affect.creneau.heuredebut == 14 and affect.cabinet.nom == cabinet.nom %>
+            <%= affect.praticien.prenom %> <%= affect.praticien.nom %><br><%= affect.praticien.pratique %> <br> <%= affect.praticien.tel %> <br> à partir du <%= datefr(affect.datedebut) %> - <%= link_to 'Voir', affect, {:class=>"affectation_btn"} %>|<%= link_to 'Modif', edit_affectation_path(affect), {:class=>"affectation_btn"} %>|<%= link_to 'Supp', affect, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"affectation_btn" %>|
+          <% end %>
+        <% end %>
+        <% @Creneaux.each do |creneau2| %>
+          <% if creneau2.numjour == i and  creneau2.heuredebut == 14 and creneau2.heurefin == 20 %>
+            <%= link_to 'Ajouter', new_affectation_path(:cabinet_id => cabinet.id, :creneau_id => creneau2.id), {:class=>"affectation_btn"} %>
+          <% end %>
+        <% end %>
+      </td>
+      <td>
+        <% @affectations.each do |affect| %>
+          <% if affect.creneau.numjour == i and affect.creneau.heuredebut == 20 and affect.cabinet.nom == cabinet.nom %>
+            <%= affect.praticien.prenom %> <%= affect.praticien.nom %><br><%= affect.praticien.pratique %> <br> <%= affect.praticien.tel %> <br> à partir du <%= datefr(affect.datedebut) %> -  <%= link_to 'Voir', affect, {:class=>"affectation_btn"} %>|<%= link_to 'Modif', edit_affectation_path(affect), {:class=>"affectation_btn"} %>|<%= link_to 'Supp', affect, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"affectation_btn" %>|
+          <% end %>
+        <% end %>
+        <% @Creneaux.each do |creneau3| %>
+          <% if creneau3.numjour == i and  creneau3.heuredebut == 20  %>
+            <%= link_to 'Ajouter', new_affectation_path(:cabinet_id => cabinet.id, :creneau_id => creneau3.id), {:class=>"affectation_btn"} %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <% @affectations.each do |affect| %>
+          <% if affect.creneau.numjour == i and affect.creneau.heuredebut == 8 and affect.creneau.heurefin == 20 and affect.cabinet.nom == cabinet.nom %>
+            <%= affect.praticien.prenom %> <%= affect.praticien.nom %><br><%= affect.praticien.pratique %>  <br> <%= affect.praticien.tel %> <br> à partir du <%= datefr(affect.datedebut) %> -  <%= link_to 'Voir', affect, {:class=>"affectation_btn"} %>|<%= link_to 'Modif', edit_affectation_path(affect), {:class=>"affectation_btn"} %>|<%= link_to 'Supp', affect, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"affectation_btn" %>|
+          <% end %>
+        <% end %>
+        <% @Creneaux.each do |creneau4| %>
+          <% if creneau4.numjour == i and  creneau4.heuredebut == 8 and creneau4.heurefin == 20 %>
+            <%= link_to 'Ajouter', new_affectation_path(:cabinet_id => cabinet.id, :creneau_id => creneau4.id), {:class=>"affectation_btn"} %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</p>
+<% end %>
+
+<h2>Liste des affectations (mode tableau)</h2>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th>Cabinet</th>
+      <th>Creneau</th>
+      <th>Praticien</th>
+      <th>Datedebut</th>
+      <th>Datefin</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @affectations.each do |affectation| %>
+      <tr>
+        <td><%= affectation.cabinet.nom %></td>
+        <td><%= affectation.creneau.txtjour %></td>
+        <td><%= affectation.praticien.nom %></td>
+        <td><%= datefr(affectation.datedebut) %></td>
+        <td><%= datefr(affectation.datefin) %></td>
+        <td><%= link_to 'Voir', affectation %></td>
+        <td><%= link_to 'Modifier', edit_affectation_path(affectation) %></td>
+        <td><%= link_to 'Supprimer', affectation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Nouvelle Affectation', new_affectation_path %>

@@ -1,0 +1,42 @@
+<%= form_with(model: affectation, local: true) do |form| %>
+  <% if affectation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(affectation.errors.count, "error") %> prohibited this affectation from being saved:</h2>
+
+      <ul>
+      <% affectation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :cabinet_id %>
+    <%= form.text_field :cabinet_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :creneau_id %>
+    <%= form.text_field :creneau_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :praticien_id %>
+    <%= form.text_field :praticien_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :datedebut %>
+    <%= form.datetime_select :datedebut %>
+  </div>
+
+  <div class="field">
+    <%= form.label :datefin %>
+    <%= form.datetime_select :datefin %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

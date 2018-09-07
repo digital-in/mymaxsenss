@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Services</h1>
+
+<table class="table table-dark">
+<thead>
+    <tr>
+      <th>Nom</th>
+      <th>Description</th>
+      <th>Tarif HT</th>
+      <th>TVA</th>
+      <th>Périodicité (mois)</th>
+      <th>Condition 1 d'application</th>
+      <th>Condition 2 d'application</th>
+      <th>Archivé</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @services.each do |service| %>
+      <tr>
+        <td><%= service.nom %></td>
+        <td><%= service.description %></td>
+        <td><%= service.tarifht %></td>
+        <td><%= service.tva %>%</td>
+        <td><%= service.periodicitemois %></td>
+        <td><%= service.condition1 %></td>
+        <td><%= service.condition2 %></td>
+        <td><%= human_boolean(service.archive) %></td>
+        <td><%= link_to 'Voir', service %></td>
+        <td><%= link_to 'Modifier', edit_service_path(service) %></td>
+        <td><%= link_to 'Supprimer', service, method: :delete, data: { confirm: 'Êtes-vous certain ?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nouveau Service', new_service_path %>

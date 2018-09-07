@@ -1,0 +1,48 @@
+<h1>Modifier une affectation</h1>
+
+<%= form_with(model: @affectation, local: true) do |form| %>
+<% if @affectation.errors.any? %>
+	<div id="error_explanation">
+	<h2>
+	<%= pluralize(@affectation.errors.count, "erreur") %> dans ce formulaire:
+	</h2>
+	<ul>
+		<% @affectation.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+	</div>
+<% end %>
+
+<table class="table table-dark">												       
+<tr>
+	<td><strong>Cabinet</strong></td>
+	<td><%= form.select :cabinet_id, options_for_select(@Cabinets, @affectation.cabinet_id) %></td>
+</tr>
+<tr>
+	<td><strong>Créneau</strong></td>
+	<td><%= form.select :creneau_id, options_for_select(@Creneaux, @affectation.creneau_id) %></td>
+</tr>
+<tr>
+	<td><strong>Praticien</strong></td>
+	<td><%= form.select :praticien_id, options_for_select(@Praticiens, @affectation.praticien_id) %></td>
+</tr>
+<tr>
+	<td><strong>Date de début</strong></td>
+	<td><%= form.date_select :datedebut, order: [:day, :month, :year] %></td>
+</tr>
+<tr>
+	<td><strong>Date de fin</strong></td>
+	<td><%= form.date_select :datefin, order: [:day, :month, :year] %></td>
+</tr>
+
+											       
+<tr>
+	<td><%= form.submit 'Enregistrer la modification', :class => 'btn btn-primary'%></td>
+</tr>
+</table>
+																			       
+<% end %>
+
+<%= link_to 'Show', @affectation %> |
+<%= link_to 'Back', affectations_path %>

@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Détails du service</h2>
+
+<table class="table table-dark">
+    <tr>
+      <th>Nom</th>
+      <td><%= @service.nom %></td>
+    </tr>
+    <tr>
+      <th>Description</th>
+      <td><%= @service.description %></td>
+    </tr>
+    <tr>  
+      <th>Tarif HT</th>
+      <td><%= @service.tarifht %></td>
+    </tr>
+    <tr>  
+      <th>TVA</th>
+      <td><%= @service.tva %></td>
+    </tr>
+    <tr>  
+      <th>Périodicité (mois)</th>
+      <td><%= @service.periodicitemois %></td>
+    </tr>
+    <tr>  
+      <th>Condition 1 d'application</th>
+      <td><%= @service.condition1 %></td>
+    </tr>
+    <tr>  
+      <th>Condition 2 d'application</th>
+      <td><%= @service.condition2 %></td>
+    </tr>
+    <tr>  
+      <th>Archivé</th>
+      <td><%= human_boolean(@service.archive) %></td>
+    </tr>
+</table>
+
+<%= link_to 'Modifier', edit_service_path(@service) %> |
+<%= link_to 'Retour à la liste', services_path %>

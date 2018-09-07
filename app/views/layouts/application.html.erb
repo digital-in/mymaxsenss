@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mymaxsenss</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container">
+	    <header class="masthead mb-auto">
+		    <div class="inner">
+		    <h1 class="masthead-brand titre">my MaxSenss</h1>
+			<nav class="nav nav-masthead justify-content-center">
+				<a class="nav-link" href="/">Accueil</a>
+				<% if logged_in? %>
+					<a class="nav-link" href="/lieus">Lieux</a>
+					<a class="nav-link" href="/cabinets">Cabinets</a>
+					<a class="nav-link" href="/creneaus">Créneaux type</a>
+					<a class="nav-link" href="/praticiens">Praticiens</a>
+					<a class="nav-link" href="/affectations">Affectations</a>
+					<a class="nav-link" href="/services">Services</a>
+     				<%= link_to 'Logout', session_path('bogus-id'), method: :delete, class: 'nav-link' %>
+  				<% else %>
+					<%= link_to "S'identifier", new_session_path, { :class=>"nav-link" } %>
+  					<%= link_to "Créer un compte", new_user_path, { :class=>"nav-link" } %>
+				<% end %>
+			</nav>
+		    </div>
+
+	    </header>
+	    <section class="round">
+	    <%= yield %>
+	    </section>
+    </div>
+  </body>
+</html>
+

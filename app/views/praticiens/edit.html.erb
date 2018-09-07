@@ -1,0 +1,62 @@
+<h1>Modifier le praticien</h1>
+ 
+<%= form_with(model: @praticien, local: true) do |form| %>
+<% if @praticien.errors.any? %>
+	<div id="error_explanation">
+	<h2>
+	<%= pluralize(@praticien.errors.count, "erreur") %> dans ce formulaire:
+	</h2>
+	<ul>
+		<% @praticien.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+	</div>
+<% end %>
+
+<table>														       
+<tr>
+	<td><strong>Nom :</strong></td>
+	<td><%= form.text_field :nom %></td>
+</tr>
+<tr>
+	<td><strong>Prénom :</strong></td>
+	<td><%= form.text_field :prenom %></td>
+</tr>
+<tr>
+	<td><strong>Pratique :</strong></td>
+	<td><%= form.text_field :pratique %></td>
+</tr>
+<tr>
+	<td><strong>E-mail :</strong></td>
+	<td><%= form.email_field :email %></td>
+</tr>
+<tr>
+	<td><strong>Téléphone :</strong></td>
+	<td><%= form.telephone_field :tel %></td>
+</tr>
+<tr>
+	<td><strong>Informations :</strong></td>
+	<td><%= form.text_area :text %></td>
+</tr>
+<tr>
+	<td><strong>Praticien MaxSenss :</strong></td>
+	<td><%= form.check_box :maxsenss %></td>
+</tr>
+<tr>
+	<td><strong>Pratiques pour les kids :</strong></td>
+	<td><%= form.check_box :kids %></td>
+</tr>
+<tr>
+	<td><strong>Archivé :</strong></td>
+	<td><%= form.check_box :archive %></td>
+</tr>
+											       
+<tr>
+	<td><%= form.submit 'Enregistrer', :class => 'btn btn-primary'%></td>
+</tr>
+</table>
+																			       
+<% end %>
+																			       
+<%= link_to 'Retour', praticiens_path %>

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lieux</h1>
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Adresse</th>
+      <th>Codepostal</th>
+      <th>Ville</th>
+      <th>Archive</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lieus.each do |lieu| %>
+      <tr class="<%= is_archive_boolean(lieu.archive) %>">
+        <td><%= lieu.nom %></td>
+        <td><%= lieu.adresse %></td>
+        <td><%= lieu.codepostal %></td>
+        <td><%= lieu.ville %></td>
+        <td><%= human_boolean(lieu.archive) %></td>
+        <td><%= link_to 'Show', lieu %></td>
+        <td><%= link_to 'Edit', edit_lieu_path(lieu) %></td>
+        <td><%= link_to 'Destroy', lieu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nouveau Lieu', new_lieu_path %>

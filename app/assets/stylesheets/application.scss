@@ -1,0 +1,68 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require bootstrap-theme.min.css
+ *= require bootstrap.min.css
+ *= require font-awesome
+ *= require bootstrap-datepicker
+ */
+
+a.nav-link {
+	padding-right: 20px;
+}
+body {
+	background-color: black;
+	color: white;
+}
+a {
+	color: #42caad !important;
+}
+.pretty th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.pretty th .asc {
+  background-image: url(/images/up_arrow.gif);
+}
+
+.pretty th .desc {
+  background-image: url(/images/down_arrow.gif);
+}
+
+tr.archive * {
+    background-color: #444;
+}
+
+table.tableaffectation td {
+    height: 10px !important;
+}
+table.tableaffectation * {
+    border: 1px solid white;
+    padding: 5px;
+}
+table.tableaffectation {
+    border: 1px solid white;
+    width: 91%;
+}
+a.affectation_btn {
+    font-size: 10px;
+    padding: 0px;
+    margin-right: 2px;
+    margin-left: 2px;
+    border: none;
+}
+.datepicker {
+    background-color: black;
+    border: 1px solid white;
+}
